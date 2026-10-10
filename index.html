@@ -40,34 +40,34 @@
     padding: 40px 24px;
   }
 
-  /* ===== 横板主体：左右分栏 ===== */
+  /* ===== 主体：上下结构（名片在上，数字分身在下） ===== */
   .layout {
-    display: grid;
-    grid-template-columns: 320px 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 24px;
-    align-items: start;
   }
 
-  /* ===== 左栏：个人名片 ===== */
+  /* ===== 上方：个人名片 ===== */
   .profile-card {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 32px 24px;
+    padding: 28px 24px 20px;
     text-align: center;
-    position: sticky;
-    top: 40px;
+    width: 100%;
+    max-width: 880px;
+    margin: 0 auto;
     box-shadow: var(--shadow);
   }
   .avatar {
-    width: 92px; height: 92px;
+    width: 104px; height: 104px;
     border-radius: 50%;
     margin: 0 auto 14px;
     background: #f4f6f1;
     display: flex; align-items: center; justify-content: center;
     border: 1px solid #e4e8df;
   }
-  .profile-card h1 { font-size: 22px; letter-spacing: 4px; font-weight: 600; }
+  .profile-card h1 { font-size: 24px; letter-spacing: 4px; font-weight: 600; }
   .profile-card .tagline {
     margin-top: 6px;
     font-size: 13px;
@@ -82,7 +82,14 @@
     margin: 14px auto 0;
   }
 
-  .info-list { margin-top: 18px; text-align: left; }
+  .info-list {
+    margin-top: 22px;
+    text-align: left;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 28px;
+  }
+  .info-block { min-width: 0; }
   .info-group {
     font-size: 12px;
     color: var(--green-deep);
@@ -106,8 +113,14 @@
   }
   .info-item .value { color: var(--text); }
 
-  /* ===== 右栏 ===== */
-  .right-col { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+  /* ===== 下方：数字分身 ===== */
+  .right-col {
+    display: flex; flex-direction: column; gap: 16px;
+    min-width: 0;
+    width: 100%;
+    max-width: 880px;
+    margin: 0 auto;
+  }
 
   .section-title {
     display: flex; align-items: center; gap: 8px;
@@ -125,8 +138,8 @@
     border-radius: var(--radius);
     overflow: hidden;
     display: flex; flex-direction: column;
-    height: 430px;
-    max-width: 620px;
+    height: 460px;
+    max-width: none;
     box-shadow: var(--shadow);
   }
   .chat-header {
@@ -252,14 +265,13 @@
 
   /* ===== 平板适配 ===== */
   @media (max-width: 900px) {
-    .layout { grid-template-columns: 260px 1fr; gap: 16px; }
     .container { padding: 20px 14px; }
+    .info-list { grid-template-columns: repeat(2, 1fr); gap: 0 20px; }
   }
 
   /* ===== 手机适配：切回纵向 ===== */
   @media (max-width: 640px) {
-    .layout { grid-template-columns: 1fr; }
-    .profile-card { position: static; }
+    .info-list { grid-template-columns: 1fr; gap: 0; }
     .chat-card { height: 68vh; min-height: 420px; max-width: none; }
     .bubble { max-width: 82%; }
     .quick-questions { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
@@ -294,47 +306,53 @@
       <p class="tagline">一个正在学习用 AI 做产品的内容策划</p>
 
       <div class="info-list">
-        <div class="info-group">基本信息</div>
-        <div class="info-item">
-          <span class="label">身份</span>
-          <span class="value">上海师范大学 · 大三学生</span>
-        </div>
-        <div class="info-item">
-          <span class="label">坐标</span>
-          <span class="value">上海</span>
-        </div>
-        <div class="info-item">
-          <span class="label">特点</span>
-          <span class="value">注重细节，理性务实</span>
-        </div>
-
-        <div class="info-group">兴趣与热爱</div>
-        <div class="info-item">
-          <span class="label">兴趣</span>
-          <span class="value">音乐 · 追剧 · 旅游</span>
-        </div>
-        <div class="info-item">
-          <span class="label">旅行偏好</span>
-          <span class="value">能慢下来、有生活气息的地方</span>
+        <div class="info-block">
+          <div class="info-group">基本信息</div>
+          <div class="info-item">
+            <span class="label">身份</span>
+            <span class="value">上海师范大学 · 大三学生</span>
+          </div>
+          <div class="info-item">
+            <span class="label">坐标</span>
+            <span class="value">上海</span>
+          </div>
+          <div class="info-item">
+            <span class="label">特点</span>
+            <span class="value">注重细节，理性务实</span>
+          </div>
         </div>
 
-        <div class="info-group">近况与期待</div>
-        <div class="info-item">
-          <span class="label">近况</span>
-          <span class="value">认真备考中</span>
+        <div class="info-block">
+          <div class="info-group">兴趣与热爱</div>
+          <div class="info-item">
+            <span class="label">兴趣</span>
+            <span class="value">音乐 · 追剧 · 旅游</span>
+          </div>
+          <div class="info-item">
+            <span class="label">旅行偏好</span>
+            <span class="value">能慢下来、有生活气息的地方</span>
+          </div>
         </div>
-        <div class="info-item">
-          <span class="label">关心方向</span>
-          <span class="value">大学以后的生活会是怎样</span>
-        </div>
-        <div class="info-item">
-          <span class="label">小期待</span>
-          <span class="value">经济独立、有自己的小空间</span>
+
+        <div class="info-block">
+          <div class="info-group">近况与期待</div>
+          <div class="info-item">
+            <span class="label">近况</span>
+            <span class="value">认真备考中</span>
+          </div>
+          <div class="info-item">
+            <span class="label">关心方向</span>
+            <span class="value">大学以后的生活会是怎样</span>
+          </div>
+          <div class="info-item">
+            <span class="label">小期待</span>
+            <span class="value">经济独立、有自己的小空间</span>
+          </div>
         </div>
       </div>
     </aside>
 
-    <!-- ===== 右栏：数字分身聊天区 ===== -->
+    <!-- ===== 下方：数字分身聊天区 ===== -->
     <main class="right-col">
       <section>
         <div class="section-title">数字分身</div>
