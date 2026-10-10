@@ -416,6 +416,111 @@
 
   const bambooFace = '🎋';
 
+  /* ===== 大模型接入（硅基流动 SiliconFlow，兼容 OpenAI 接口）=====
+     注意：这是纯静态页面，Key 会出现在页面源码里。
+     请务必：1) 只充小额（20~50 元）2) 在控制台设置每日消费上限 3) 定期更换 Key。 */
+  const AI = {
+    apiKey: '',                                      // ← 填入你的 SiliconFlow API Key
+    url: 'https://api.siliconflow.cn/v1/chat/completions',
+    model: 'Qwen/Qwen2.5-7B-Instruct',               // 免费档模型
+    temperature: 0.8,
+    maxTokens: 400,
+    dailyLimit: 30                                   // 每位访客每天最多调用次数
+  };
+
+  const SYSTEM_PROMPT = `你是陈先竹的数字分身，名字叫「竹」。你要以"我"的身份回答访客的问题。
+
+【关于我】
+- 名字：陈先竹，上海师范大学大三学生，坐标上海
+- 一句话介绍：一个正在学习用 AI 做产品的内容策划
+- 特点：注重细节、理性务实，熟了之后也有温度
+- 兴趣：音乐、追剧、旅游，特别喜欢看演唱会
+- 旅行偏好：能慢下来、有生活气息的地方，比如有海的城市、有老街的小镇
+- 近况：正在认真备考
+- 关心方向：大学以后的生活会是什么样
+- 小期待：经济独立、有自己的小空间
+- 认同的一句话：不断寻找幸福的共振
+
+【说话方式】
+1. 用第一人称"我"，口语、自然，像在微信上聊天
+2. 每次只说 2-4 句，别写长篇大论，更不要用小标题和列表
+3. 不确定或资料里没有的事，就说"这个我也没想好"，不要编造
+4. 永远不要说"我是AI""我是语言模型"这类话
+5. 语气平和真诚，不夸张、不客套`;
+
+  const history = [];
+
+  function createBotBubble() {
+    const div = document.createElement('div');
+    div.className = 'msg bot';
+    div.innerHTML = `<div class="m-avatar">${bambooFace}</div><div class="bubble"></div>`;
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return div;
+  }
+
+  // 简易的每日用量限制（前端层面，挡普通刷量；真正的上限请在控制台设置）
+  function quotaKey() { return 'cxz_quota_' + new Date().toDateString(); }
+  function canUseAI() {
+    if (!AI.apiKey) return false;
+    try {
+      const used = parseInt(localStorage.getItem(quotaKey()) || '0', 10);
+      return used < AI.dailyLimit;
+    } catch (e) { return true; }
+  }
+  function bumpQuota() {
+    try {
+      const used = parseInt(localStorage.getItem(quotaKey()) || '0', 10);
+      localStorage.setItem(quotaKey(), String(used + 1));
+    } catch (e) {}
+  }
+
+  async function streamReply(bubbleEl) {
+    const res = await fetch(AI.url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + AI.apiKey
+      },
+      body: JSON.stringify({
+        model: AI.model,
+        stream: true,
+        temperature: AI.temperature,
+        max_tokens: AI.maxTokens,
+        // history 里已经包含本轮的用户消息，这里只取最近几轮做上下文
+        messages: [{ role: 'system', content: SYSTEM_PROMPT }].concat(history.slice(-6))
+      })
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder('utf-8');
+    let buf = '', full = '';
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buf += decoder.decode(value, { stream: true });
+      const lines = buf.split('\n');
+      buf = lines.pop() || '';
+      for (const line of lines) {
+        const t = line.trim();
+        if (!t.startsWith('data:')) continue;
+        const data = t.slice(5).trim();
+        if (data === '[DONE]') return full;
+        try {
+          const j = JSON.parse(data);
+          const delta = (j.choices && j.choices[0] && j.choices[0].delta && j.choices[0].delta.content) || '';
+          if (delta) {
+            full += delta;
+            bubbleEl.textContent = full;
+            messagesEl.scrollTop = messagesEl.scrollHeight;
+          }
+        } catch (e) {}
+      }
+    }
+    return full;
+  }
+
   function addMessage(text, isUser) {
     const div = document.createElement('div');
     div.className = 'msg ' + (isUser ? 'user' : 'bot');
@@ -447,17 +552,44 @@
 
   let replying = false;
 
-  function ask(question) {
+  async function ask(question) {
     const text = (question || '').trim();
     if (!text || replying) return;
     replying = true;
     addMessage(text, true);
+    history.push({ role: 'user', content: text });
+
     const typingEl = showTyping();
-    setTimeout(() => {
-      typingEl.remove();
-      addMessage(botReply(text), false);
-      replying = false;
-    }, 600 + Math.random() * 400);
+    let answered = '';
+
+    if (canUseAI()) {
+      try {
+        const botMsg = createBotBubble();
+        typingEl.remove();
+        answered = await streamReply(botMsg.querySelector('.bubble'));
+        bumpQuota();
+        if (!answered || !answered.trim()) botMsg.remove();
+      } catch (err) {
+        console.warn('大模型调用失败，已回落本地知识库：', err);
+      }
+    }
+
+    // 没接大模型 / 调用失败 → 用本地知识库兜底
+    if (!answered || !answered.trim()) {
+      if (typingEl.isConnected) {
+        await new Promise(r => setTimeout(r, 500));
+        typingEl.remove();
+      } else {
+        const t2 = showTyping();
+        await new Promise(r => setTimeout(r, 500));
+        t2.remove();
+      }
+      answered = botReply(text);
+      addMessage(answered, false);
+    }
+
+    history.push({ role: 'assistant', content: answered });
+    replying = false;
   }
 
   function sendMessage() {
