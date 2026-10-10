@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>陈先竹 · 个人主页</title>
+<meta name="theme-color" content="#7d9a6e">
+<meta name="description" content="陈先竹的个人主页与数字分身「竹」——上海师范大学大三学生，喜欢音乐、追剧和旅游，正在寻找幸福的共振。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="陈先竹 · 个人主页">
+<meta property="og:description" content="不断寻找幸福的共振。这里有我的近况、兴趣，还有一个可以随时聊天的数字分身。">
+<meta property="og:url" content="https://2805766785.github.io/personal-homepage/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23f1f6ee'/><path d='M32 14 V50 M28 14 H36 M28 26 H36 M28 38 H36 M32 26 C25 22 20 21 14 18 M32 26 C25 28 21 29 16 31' stroke='%237d9a6e' stroke-width='3' stroke-linecap='round' fill='none'/></svg>">
 <style>
   :root {
     --bg: #fafafa;
@@ -15,6 +23,7 @@
     --text: #3d3d3f;
     --text-light: #9a9a9e;
     --radius: 14px;
+    --shadow: 0 2px 10px rgba(61, 61, 63, .05);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -48,6 +57,7 @@
     text-align: center;
     position: sticky;
     top: 40px;
+    box-shadow: var(--shadow);
   }
   .avatar {
     width: 92px; height: 92px;
@@ -117,6 +127,7 @@
     display: flex; flex-direction: column;
     height: 430px;
     max-width: 620px;
+    box-shadow: var(--shadow);
   }
   .chat-header {
     background: var(--card);
@@ -215,6 +226,30 @@
     font-size: 13px; color: var(--text-light);
   }
 
+  /* ===== 给访客的一句话引导 ===== */
+  .visitor-note {
+    margin-bottom: 12px;
+    padding: 10px 14px;
+    background: var(--green-light);
+    border: 1px solid #e2ecdd;
+    border-radius: 10px;
+    font-size: 13px;
+    color: #6b7f60;
+    line-height: 1.6;
+  }
+  .visitor-note b { font-weight: 600; color: var(--green-deep); }
+
+  /* ===== 数字分身"正在输入" ===== */
+  .typing { display: inline-flex; gap: 4px; align-items: center; padding: 4px 2px; }
+  .typing i {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green);
+    animation: blink 1.2s infinite ease-in-out;
+  }
+  .typing i:nth-child(2) { animation-delay: .2s; }
+  .typing i:nth-child(3) { animation-delay: .4s; }
+  @keyframes blink { 0%, 80%, 100% { opacity: .25; } 40% { opacity: 1; } }
+
   /* ===== 平板适配 ===== */
   @media (max-width: 900px) {
     .layout { grid-template-columns: 260px 1fr; gap: 16px; }
@@ -225,8 +260,12 @@
   @media (max-width: 640px) {
     .layout { grid-template-columns: 1fr; }
     .profile-card { position: static; }
-    .chat-card { height: 500px; max-width: none; }
-    .bubble { max-width: 80%; }
+    .chat-card { height: 68vh; min-height: 420px; max-width: none; }
+    .bubble { max-width: 82%; }
+    .quick-questions { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+    .quick-questions::-webkit-scrollbar { display: none; }
+    .quick-btn { white-space: nowrap; flex-shrink: 0; }
+    .footer { margin-top: 24px; }
   }
 </style>
 </head>
@@ -299,6 +338,9 @@
     <main class="right-col">
       <section>
         <div class="section-title">数字分身</div>
+        <div class="visitor-note">
+          第一次来？这是「竹」——一个按我的经历和性格搭出来的数字分身。<b>想知道什么，直接问它就好</b>，比如我的近况、爱好，或者随便聊聊。
+        </div>
         <div class="chat-card">
           <div class="chat-header">
             <div class="bot-avatar">🎋</div>
@@ -354,14 +396,22 @@
       reply: '我是一个注重细节、理性务实的人。熟悉之后你会发现我其实也很有温度，喜欢音乐、追剧和旅游，是个认真生活的人。' },
     { keys: ['你好', 'hi', 'hello', '嗨', '在吗'],
       reply: '你好，很高兴见到你。想聊点什么？可以问我的爱好、近况，或者随便聊聊。' },
+    { keys: ['学校', '师范大学', '专业', '读哪', '在哪上学', '大几'],
+      reply: '我在上海师范大学读书，现在大三。' },
+    { keys: ['座右铭', '相信的一句话', '喜欢的话', '签名'],
+      reply: '我认同一句话："不断寻找幸福的共振"。对我来说，幸福不是一个终点，而是那些刚好对上的瞬间——比如演唱会全场一起合唱的时候。' },
+    { keys: ['上海', '住在哪', '常待的地方'],
+      reply: '我在上海。这座城市节奏挺快的，但总能找到慢下来的角落——有老街，也有 live house，这点我很喜欢。' },
+    { keys: ['能聊什么', '可以问什么', '聊什么', '怎么问', '不会聊'],
+      reply: '你可以问我：最近在忙什么、最喜欢做什么、想去哪里旅游、希望以后过什么样的生活。当然，随便聊聊也都行。' },
     { keys: ['谢谢', '感谢'],
       reply: '不客气，欢迎常来。' },
   ];
 
   const fallbackReplies = [
-    '这个问题我一时答不上来。在我的世界里，音乐、追剧和旅游占了很大一部分，相关的话题随时可以聊。',
-    '嗯，这个我还真没想过。不过我是个注重细节、理性务实的人，或许可以从这个角度想想？',
-    '这个问题超出了我的范围。你可以问我"最喜欢做什么""最想去哪里旅游""最近在忙什么"这类问题。',
+    '这个问题一时答不上来诶。不过音乐、追剧和旅游基本构成了我生活的主线，往这几个方向问，我都能聊。',
+    '嗯，这个我还真没想过。我平时是个注重细节、偏理性务实的人，大概会从这个角度去看吧。要是你好奇别的，换个问法试试？',
+    '这个超出了我的范围。你可以问我"最近在忙什么""最喜欢做什么""想去哪里旅游"，这三类我最有话说。',
   ];
 
   const bambooFace = '🎋';
@@ -385,21 +435,44 @@
     return fallbackReplies[Math.floor(Math.random() * fallbackReplies.length)];
   }
 
+  function showTyping() {
+    const div = document.createElement('div');
+    div.className = 'msg bot';
+    div.innerHTML = `<div class="m-avatar">${bambooFace}</div>
+      <div class="bubble"><span class="typing"><i></i><i></i><i></i></span></div>`;
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return div;
+  }
+
+  let replying = false;
+
+  function ask(question) {
+    const text = (question || '').trim();
+    if (!text || replying) return;
+    replying = true;
+    addMessage(text, true);
+    const typingEl = showTyping();
+    setTimeout(() => {
+      typingEl.remove();
+      addMessage(botReply(text), false);
+      replying = false;
+    }, 600 + Math.random() * 400);
+  }
+
   function sendMessage() {
     const text = inputEl.value.trim();
     if (!text) return;
     inputEl.value = '';
-    addMessage(text, true);
-    setTimeout(() => addMessage(botReply(text), false), 500);
+    ask(text);
   }
 
   function askQuick(q) {
-    addMessage(q, true);
-    setTimeout(() => addMessage(botReply(q), false), 500);
+    ask(q);
   }
 
   // 开场白
-  addMessage('你好，有什么想问我的吗？\n爱好、近况、想去哪里玩，都可以聊。', false);
+  addMessage('你好，我是竹 🎋\n这儿是我的主页，想知道什么直接问我——爱好、近况、想去哪玩，都能聊。', false);
 </script>
 </body>
 </html>
