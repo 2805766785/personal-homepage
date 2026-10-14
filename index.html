@@ -171,6 +171,54 @@
   .row .label { color: #a3a8b0; flex-shrink: 0; width: 66px; font-size: 13px; }
   .row .value { color: var(--text); }
 
+  /* ===== 开发环境 ===== */
+  .dev-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .dev-item {
+    position: relative;
+    background:
+      radial-gradient(circle, rgba(125,154,110,.05) 1px, transparent 1.4px) 0 0 / 16px 16px,
+      linear-gradient(180deg, #ffffff, #fbfdfa);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 18px;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    animation: rise .5s ease both;
+  }
+  .dev-item:nth-child(1) { animation-delay: .06s; }
+  .dev-item:nth-child(2) { animation-delay: .12s; }
+  .dev-item:nth-child(3) { animation-delay: .18s; }
+  .dev-item:nth-child(4) { animation-delay: .24s; }
+  .dev-item::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--green), #b9d2ad);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .3s ease;
+  }
+  .dev-item:hover {
+    transform: translateY(-5px);
+    border-color: #cfe0c6;
+    box-shadow: 0 14px 34px rgba(125, 154, 110, .16);
+  }
+  .dev-item:hover::before { transform: scaleX(1); }
+  .dev-label {
+    display: block;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+  }
+  .dev-value { font-size: 15px; font-weight: 600; line-height: 1.45; color: var(--text); }
+  .dev-sub { display: block; margin-top: 6px; font-size: 12.5px; font-weight: 400; color: var(--text-light); }
+
   /* ===== 数字分身 ===== */
   .chat-section { animation: rise .5s ease .24s both; }
   .section-head {
@@ -333,6 +381,7 @@
 
   @media (max-width: 860px) {
     .facts { grid-template-columns: repeat(2, 1fr); }
+    .dev-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 640px) {
     .nav-links { gap: 18px; }
@@ -340,6 +389,7 @@
     .hero { padding: 96px 0 64px; }
     .hero-name { font-size: 38px; }
     .facts { grid-template-columns: 1fr; }
+    .dev-grid { grid-template-columns: 1fr; }
     .section-head { flex-direction: column; align-items: flex-start; gap: 6px; }
     .chat-card { height: 66vh; min-height: 400px; }
     .bubble { max-width: 82%; }
@@ -363,6 +413,7 @@
       <nav class="nav-links">
         <a href="#home">首页</a>
         <a href="#profile">档案</a>
+        <a href="#environment">环境</a>
         <a href="#assistant">助手</a>
       </nav>
     </div>
@@ -414,6 +465,40 @@
           <div class="row"><span class="label">关心方向</span><span class="value">大学以后的生活会是怎样</span></div>
           <div class="row"><span class="label">小期待</span><span class="value">经济独立、有自己的小空间</span></div>
         </article>
+      </section>
+
+      <!-- ===== 开发环境 ===== -->
+      <section class="dev-section" id="environment">
+        <div class="section-head">
+          <div>
+            <h2>开发环境</h2>
+            <p class="sub">Development Environment</p>
+          </div>
+          <span class="badge">Built with AI</span>
+        </div>
+
+        <div class="dev-grid">
+          <div class="dev-item">
+            <span class="dev-label">IDE</span>
+            <span class="dev-value">CodeBuddy IDE</span>
+            <span class="dev-sub">写页面、改样式、推送部署</span>
+          </div>
+          <div class="dev-item">
+            <span class="dev-label">AI Agent</span>
+            <span class="dev-value">CodeBuddy Agent</span>
+            <span class="dev-sub">从需求到代码全程搭起来</span>
+          </div>
+          <div class="dev-item">
+            <span class="dev-label">LLM</span>
+            <span class="dev-value">GLM-4-Flash</span>
+            <span class="dev-sub">智谱 BigModel · 数字分身「竹」</span>
+          </div>
+          <div class="dev-item">
+            <span class="dev-label">Deploy</span>
+            <span class="dev-value">GitHub Pages</span>
+            <span class="dev-sub">HTML / CSS / JavaScript</span>
+          </div>
+        </div>
       </section>
 
       <!-- ===== 数字分身 ===== -->
@@ -683,7 +768,7 @@
 
   /* ===== 导航高亮 ===== */
   const navLinks = document.querySelectorAll('.nav-links a');
-  const sections = ['home', 'profile', 'assistant'].map(id => document.getElementById(id));
+  const sections = ['home', 'profile', 'environment', 'assistant'].map(id => document.getElementById(id));
   if ('IntersectionObserver' in window) {
     const spy = new IntersectionObserver((entries) => {
       entries.forEach(e => {
