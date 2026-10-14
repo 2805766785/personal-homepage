@@ -512,13 +512,13 @@
 
   const bambooFace = '🎋';
 
-  /* ===== 大模型接入（硅基流动 SiliconFlow，兼容 OpenAI 接口）=====
-     注意：这是纯静态页面，Key 会出现在页面源码里。
-     请务必：1) 只充小额（20~50 元）2) 在控制台设置每日消费上限 3) 定期更换 Key。 */
+  /* ===== 大模型接入（智谱 BigModel / Zhipu AI，兼容 OpenAI 流式接口）=====
+     注意：这是纯静态页面，Key 会出现在页面源码里，任何人都能在浏览器开发者工具里看到。
+     已选用免费模型 glm-4-flash，不会产生费用；建议定期更换 Key，并在控制台设置用量上限。 */
   const AI = {
-    apiKey: '',                                      // ← 填入你的 SiliconFlow API Key
-    url: 'https://api.siliconflow.cn/v1/chat/completions',
-    model: 'Qwen/Qwen2.5-7B-Instruct',               // 免费档模型
+    apiKey: 'd3f7a13bea4646898ecb5ed8d30a8cee.fnkSbgvgLq6RS8Yu',  // ← 你的智谱 API Key
+    url: 'https://open.bigmodel.cn/api/paas/v4/chat/completions',
+    model: 'glm-4-flash',                             // 智谱免费模型
     temperature: 0.8,
     maxTokens: 400,
     dailyLimit: 30                                   // 每位访客每天最多调用次数
