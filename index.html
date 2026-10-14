@@ -3,29 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="陈先竹 · 上海师范大学大三学生 · 个人主页与数字分身「竹」——喜欢音乐、追剧和旅游，不断寻找幸福的共振。">
+  <meta name="description" content="陈先竹 · 上海师范大学大三学生 · 个人主页与数字分身「竹」——喜欢音乐、追剧和旅游。">
   <title>陈先竹 · 个人主页</title>
   <meta property="og:type" content="website">
   <meta property="og:title" content="陈先竹 · 个人主页">
-  <meta property="og:description" content="不断寻找幸福的共振。这里有我的近况、兴趣，还有一个可以随时聊天的数字分身。">
+  <meta property="og:description" content="把寻常的日子，慢慢过成自己喜欢的模样。这里有我的近况、兴趣，还有一个可以随时聊天的数字分身。">
   <meta property="og:url" content="https://2805766785.github.io/personal-homepage/">
   <meta name="twitter:card" content="summary">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%23fde7f0'/><path d='M32 14 V50 M28 14 H36 M28 26 H36 M28 38 H36 M32 26 C25 22 20 21 14 18 M32 26 C25 28 21 29 16 31' stroke='%23e481a8' stroke-width='3' stroke-linecap='round' fill='none'/></svg">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%23fdeef4'/><path d='M32 14 V50 M28 14 H36 M28 26 H36 M28 38 H36 M32 26 C25 22 20 21 14 18 M32 26 C25 28 21 29 16 31' stroke='%23e3a0bd' stroke-width='3' stroke-linecap='round' fill='none'/></svg">
 <style>
   :root {
-    /* 柔粉 + 奶油，去掉刺眼的绿 */
-    --bg: #fdf6f9;
+    /* 更淡的米粉色，去掉刺眼绿 */
+    --bg: #fefafc;
     --card: #ffffff;
-    --text: #574f55;
-    --text-soft: #ab9ea8;
-    --border: #f4e7ee;
-    --pink: #f2a6c0;
-    --pink-deep: #e481a8;
-    --pink-soft: #f7cadd;
+    --text: #6a6068;
+    --text-soft: #b6aab4;
+    --border: #f6ecf2;
+    --pink: #f4c8d8;
+    --pink-deep: #e7a6c2;
+    --pink-soft: #f9dde8;
     --radius: 22px;
     --radius-sm: 14px;
-    --shadow: 0 10px 30px rgba(214, 140, 170, .14);
-    --shadow-sm: 0 4px 14px rgba(214, 140, 170, .10);
+    --shadow: 0 10px 30px rgba(214, 160, 190, .12);
+    --shadow-sm: 0 4px 14px rgba(214, 160, 190, .09);
     --font-sans: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
     --font-mono: "SFMono-Regular", "JetBrains Mono", "Fira Code", Consolas, monospace;
   }
@@ -37,11 +37,11 @@
   body {
     font-family: var(--font-sans);
     color: var(--text);
-    line-height: 1.8;
+    line-height: 1.85;
     -webkit-font-smoothing: antialiased;
     background:
-      radial-gradient(900px 440px at 6% -8%, #ffe9f1 0%, rgba(255,233,241,0) 60%),
-      radial-gradient(820px 400px at 98% 0%, #fbeef4 0%, rgba(251,238,244,0) 58%),
+      radial-gradient(900px 440px at 6% -8%, #ffedf4 0%, rgba(255,237,244,0) 60%),
+      radial-gradient(820px 400px at 98% 0%, #fbf0f5 0%, rgba(251,240,245,0) 58%),
       var(--bg);
     background-attachment: fixed;
     min-height: 100vh;
@@ -55,7 +55,7 @@
   /* ===== 导航栏 ===== */
   .navbar {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(255, 252, 254, 0.78);
+    background: rgba(255, 253, 255, 0.78);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
   }
@@ -76,9 +76,9 @@
   .hero-inner { display: flex; flex-direction: column; align-items: center; text-align: center; }
   .avatar {
     width: 118px; height: 118px; border-radius: 50%;
-    background: linear-gradient(145deg, #f7b6d4, #f7c8de);
+    background: linear-gradient(145deg, #f8c8dc, #f9dce8);
     color: #fff; display: flex; align-items: center; justify-content: center;
-    margin-bottom: 30px; box-shadow: 0 12px 28px rgba(226, 140, 175, .28);
+    margin-bottom: 30px; box-shadow: 0 12px 28px rgba(214, 160, 190, .24);
     border: 3px solid #fff;
   }
   .avatar-text { font-family: var(--font-mono); font-size: 32px; font-weight: 700; letter-spacing: 1px; }
@@ -92,10 +92,10 @@
     display: inline-block; padding: 12px 30px; font-size: 14px; font-weight: 600;
     border-radius: 999px; border: 1.5px solid var(--pink); transition: all .25s; cursor: pointer;
   }
-  .btn-primary { background: linear-gradient(120deg, var(--pink), var(--pink-deep)); color: #fff; border-color: transparent; box-shadow: 0 8px 20px rgba(228, 129, 168, .30); }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(228, 129, 168, .38); }
+  .btn-primary { background: linear-gradient(120deg, var(--pink), var(--pink-deep)); color: #fff; border-color: transparent; box-shadow: 0 8px 20px rgba(231, 166, 194, .26); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(231, 166, 194, .34); }
   .btn-ghost { background: #fff; color: var(--pink-deep); }
-  .btn-ghost:hover { background: #fdeef5; transform: translateY(-2px); }
+  .btn-ghost:hover { background: #fdf0f6; transform: translateY(-2px); }
   .hero-scroll { display: flex; justify-content: center; width: 26px; height: 42px; border: 1.5px solid var(--border); border-radius: 999px; padding-top: 8px; }
   .hero-scroll-line { width: 3px; height: 12px; border-radius: 3px; background: linear-gradient(var(--pink), var(--pink-soft)); animation: scrollPulse 1.8s ease-in-out infinite; }
   @keyframes scrollPulse { 0% { transform: translateY(0); opacity: .4; } 50% { transform: translateY(8px); opacity: 1; } 100% { transform: translateY(0); opacity: .4; } }
@@ -109,7 +109,7 @@
     display: inline-flex; align-items: center; justify-content: center;
     font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: #fff;
     background: linear-gradient(135deg, var(--pink), var(--pink-soft));
-    box-shadow: 0 4px 10px rgba(226, 140, 175, .25);
+    box-shadow: 0 4px 10px rgba(214, 160, 190, .22);
   }
 
   /* ===== 关于我 ===== */
@@ -118,7 +118,7 @@
   .about-sub { margin-top: 18px; font-size: 15px; color: var(--text-soft); max-width: 720px; }
   .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
   .chip { font-size: 13px; color: var(--text); background: #fff; border: 1px solid var(--border); border-radius: 999px; padding: 7px 15px; box-shadow: var(--shadow-sm); }
-  .chip-accent { color: #fff; background: linear-gradient(120deg, var(--pink), var(--pink-deep)); border-color: transparent; box-shadow: 0 6px 14px rgba(228, 129, 168, .25); }
+  .chip-accent { color: #fff; background: linear-gradient(120deg, var(--pink), var(--pink-deep)); border-color: transparent; box-shadow: 0 6px 14px rgba(231, 166, 194, .22); }
 
   /* ===== 信息卡网格 ===== */
   .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -145,7 +145,7 @@
   }
   .assistant-header {
     display: flex; align-items: center; justify-content: space-between; padding: 16px 20px;
-    background: linear-gradient(120deg, #fde7f0, #fbf1f5); border-bottom: 1px solid var(--border);
+    background: linear-gradient(120deg, #fdeef4, #fbf1f6); border-bottom: 1px solid var(--border);
   }
   .assistant-header-info { display: flex; align-items: center; gap: 12px; }
   .assistant-avatar {
@@ -154,20 +154,20 @@
   }
   .assistant-header-info h4 { font-size: 15px; font-weight: 700; color: var(--text); }
   .assistant-header-info p { font-size: 12px; color: var(--text-soft); }
-  .assistant-messages { flex: 1; overflow-y: auto; padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; background: linear-gradient(180deg, #fff, #fdf7fb); }
-  .message { max-width: 82%; padding: 11px 15px; border-radius: 16px; font-size: 14px; line-height: 1.7; white-space: pre-line; word-break: break-word; }
+  .assistant-messages { flex: 1; overflow-y: auto; padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; background: linear-gradient(180deg, #fff, #fdf8fb); }
+  .message { max-width: 82%; padding: 11px 15px; border-radius: 16px; font-size: 14px; line-height: 1.75; white-space: pre-line; word-break: break-word; }
   .message.bot { align-self: flex-start; background: #fff; border: 1px solid var(--border); border-bottom-left-radius: 5px; box-shadow: var(--shadow-sm); }
   .message.user { align-self: flex-end; background: linear-gradient(120deg, var(--pink), var(--pink-deep)); color: #fff; border-bottom-right-radius: 5px; }
   .message.typing { color: var(--text-soft); }
   .message.typing::after { content: "…"; animation: dots 1.2s steps(4, end) infinite; }
   @keyframes dots { 0% { content: ""; } 25% { content: "·"; } 50% { content: "··"; } 75% { content: "···"; } }
   .assistant-suggestions { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 20px 12px; }
-  .suggestion { font-size: 12px; color: var(--pink-deep); background: #fdeef5; border: 1px solid #f6d6e4; border-radius: 999px; padding: 6px 13px; cursor: pointer; transition: all .25s; }
+  .suggestion { font-size: 12px; color: var(--pink-deep); background: #fdf0f6; border: 1px solid #f6e0ea; border-radius: 999px; padding: 6px 13px; cursor: pointer; transition: all .25s; }
   .suggestion:hover { background: var(--pink); color: #fff; border-color: transparent; }
   .assistant-input { display: flex; gap: 8px; padding: 12px 20px; border-top: 1px solid var(--border); background: #fff; }
-  .assistant-input input { flex: 1; border: 1px solid var(--border); border-radius: 999px; padding: 10px 16px; font-size: 14px; font-family: inherit; color: var(--text); background: #fdf6f9; outline: none; transition: border-color .25s, box-shadow .25s; }
+  .assistant-input input { flex: 1; border: 1px solid var(--border); border-radius: 999px; padding: 10px 16px; font-size: 14px; font-family: inherit; color: var(--text); background: #fefafc; outline: none; transition: border-color .25s, box-shadow .25s; }
   .assistant-input input::placeholder { color: var(--text-soft); }
-  .assistant-input input:focus { border-color: var(--pink); box-shadow: 0 0 0 3px rgba(242, 166, 192, .18); background: #fff; }
+  .assistant-input input:focus { border-color: var(--pink); box-shadow: 0 0 0 3px rgba(244, 200, 216, .20); background: #fff; }
   .assistant-input button { background: linear-gradient(120deg, var(--pink), var(--pink-deep)); color: #fff; border: none; border-radius: 999px; padding: 0 22px; font-size: 14px; font-weight: 600; cursor: pointer; transition: transform .2s; }
   .assistant-input button:hover { transform: translateY(-1px); }
 
@@ -232,13 +232,13 @@
     <section id="about" class="section">
       <div class="container">
         <h2 class="section-title"><span>01</span> 关于我</h2>
-        <p class="about-quote">不断寻找<span class="accent">幸福的共振</span></p>
-        <p class="about-sub">音乐、追剧、远行，是生活里三件安稳的小事。下面的字句，是我此刻的样子；若想再多了解一点，问问我的分身就好。</p>
+        <p class="about-quote">在寻常的日子里，<span class="accent">慢慢长成自己喜欢的模样</span></p>
+        <p class="about-sub">听歌、追剧、远行，是生活里三件安稳的小事。下面的字句，是我此刻的样子；若想再多了解一点，问问我的分身就好。</p>
         <div class="chips">
           <span class="chip">🎓 上海师范大学 · 大三</span>
           <span class="chip">📍 上海</span>
           <span class="chip">🎧 音乐 · 追剧 · 远行的偏爱</span>
-          <span class="chip chip-accent">📖 正埋首备考</span>
+          <span class="chip chip-accent">📖 正与书页相伴</span>
         </div>
       </div>
     </section>
@@ -251,22 +251,22 @@
         <div class="info-grid">
           <article class="info-card">
             <h3 class="info-title">基本信息</h3>
-            <div class="info-row"><span class="info-label">身份</span><span class="info-value">上海师范大学 · 在读大三</span></div>
+            <div class="info-row"><span class="info-label">身份</span><span class="info-value">在上海师范大学，读着大三</span></div>
             <div class="info-row"><span class="info-label">坐标</span><span class="info-value">上海</span></div>
-            <div class="info-row"><span class="info-label">特点</span><span class="info-value">心思细，性子稳，偏理性</span></div>
+            <div class="info-row"><span class="info-label">特点</span><span class="info-value">心思细，性子稳，偏爱清醒</span></div>
           </article>
 
           <article class="info-card">
             <h3 class="info-title">兴趣与热爱</h3>
-            <div class="info-row"><span class="info-label">兴趣</span><span class="info-value">音乐 · 追剧 · 远行</span></div>
-            <div class="info-row"><span class="info-label">旅行偏好</span><span class="info-value">偏爱能慢下来、沾着烟火气的地方</span></div>
+            <div class="info-row"><span class="info-label">兴趣</span><span class="info-value">听歌 · 追剧 · 偶尔想远走</span></div>
+            <div class="info-row"><span class="info-label">旅行偏好</span><span class="info-value">偏爱那些能让人慢下来的、有人情味的地方</span></div>
           </article>
 
           <article class="info-card">
             <h3 class="info-title">近况与期待</h3>
-            <div class="info-row"><span class="info-label">近况</span><span class="info-value">正埋首书页，认真备考</span></div>
-            <div class="info-row"><span class="info-label">关心方向</span><span class="info-value">常想，大学毕业后的生活会是什么模样</span></div>
-            <div class="info-row"><span class="info-label">小期待</span><span class="info-value">盼着经济独立，有一方自己的小天地</span></div>
+            <div class="info-row"><span class="info-label">近况</span><span class="info-value">正与书本，安静地相处一段时光</span></div>
+            <div class="info-row"><span class="info-label">关心方向</span><span class="info-value">总忍不住想象，往后的日子会是什么样</span></div>
+            <div class="info-row"><span class="info-label">小期待</span><span class="info-value">盼着有一天，能有自己的小世界</span></div>
           </article>
         </div>
       </div>
@@ -308,7 +308,7 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <p>© 2026 陈先竹 · 不断寻找幸福的共振</p>
+      <p>© 2026 陈先竹 · 把寻常日子过出一点光</p>
       <p class="footer-sub">Built with HTML / CSS / JavaScript</p>
     </div>
   </footer>
@@ -318,32 +318,32 @@
   const assistantInput = document.getElementById('assistantInput');
   const assistantForm = document.getElementById('assistantForm');
 
-  // 数字分身的知识库（语气更文艺，事实不变）
+  // 数字分身的知识库（语气柔、不实际，事实不变）
   const botBrain = [
     { keys: ['喜欢做什么', '爱好', '兴趣', '平时做', '喜欢'],
-      reply: '最爱的是听音乐和追剧，尤其偏爱去听一场演唱会——那股全场一起共振的热气，是耳机里怎样也听不来的。追剧，是忙乱学业后给自己的一小段喘息。若得闲，也愿意背起包去远方，看看不一样的天光。' },
+      reply: '最爱的是听歌和追剧，尤其偏爱去听一场演唱会——那股全场一起共振的热气，是耳机里怎样也听不来的。追剧，是忙乱学业后给自己的一小段喘息。若得闲，也愿意背起包去远方，看看不一样的天光。' },
     { keys: ['演唱会', '音乐会', '现场', 'live'],
-      reply: '我很喜欢演唱会。当灯光亮起、所有人一起合唱的那一刻，是戴耳机永远碰不到的感动。于我，那大概就是"幸福的共振"最具体的模样。' },
+      reply: '我很喜欢演唱会。当灯光亮起、所有人一起合唱的那一刻，是戴耳机永远碰不到的感动。那一刻的热气，总让我觉得活着真好。' },
     { keys: ['旅游', '去哪里', '想去哪', '旅行'],
       reply: '想去的地方总在变。我偏爱那种能让人慢慢下来的、沾着生活气息的角落——有海的小城，或有老街的镇子，都好。你有想推荐的地方吗？' },
     { keys: ['想获得', '想要', '希望', '目标', '想得到'],
-      reply: '此刻最想要的，大约是份"确定感"吧——学业顺顺当当地过关，也盼着大学毕业以后，能过上独立而自由的日子。说到底，就是把生活，一点点过成自己喜欢的样子。' },
+      reply: '此刻最想要的，大约是份"确定感"吧——盼着学业顺顺当当地过关，也想象着大学毕业以后，能过上独立而自由的日子。说到底，就是把生活，一点点过成自己喜欢的样子。' },
     { keys: ['毕业', '以后', '未来', '大学以后', '生活'],
-      reply: '我常好奇，大学毕业后的生活会是怎样。想过许多回：经济独立、有方自己的小天地、假期能随时出发去旅行。虽还有些未知，心里倒是满心期待的。' },
+      reply: '我常好奇，大学毕业后的生活会是怎样。想过许多回：能有自己的一方小天地、假期能随时出发去旅行。虽还有些未知，心里倒是满心期待的。' },
     { keys: ['备考', '考试', '学习', '在忙什么', '最近'],
-      reply: '最近正埋首备考。我大概是偏理性务实的那类——会列计划、抠细节，一步一步往前推。偶尔也会累，却也相信，踏实的每一步都会落到好的去处。' },
+      reply: '最近正与书本安静地相处。我大概是偏理性务实的那类——会列计划、抠细节，一步一步往前推。偶尔也会累，却也相信，踏实的每一步都会落到好的去处。' },
     { keys: ['你是谁', '你叫什么', '介绍一下'],
       reply: '你好，我是竹。关于她的事，你尽可以问我——喜好、近况，或只是想随意聊聊。' },
     { keys: ['名字', '陈先竹', '她是谁'],
-      reply: '我叫陈先竹，在上海师范大学读大三。有一句话我很喜欢："不断寻找幸福的共振"。' },
+      reply: '我叫陈先竹，在上海师范大学读大三。' },
     { keys: ['特点', '性格', '什么样的人'],
-      reply: '我是个心思细、偏理性务实的人。熟了你会发觉，其实我也温柔，爱音乐、追剧、远行，是个认真生活的人。' },
+      reply: '我是个心思细、偏理性务实的人。熟了你会发觉，其实我也温柔，爱听歌、追剧、远行，是个认真生活的人。' },
     { keys: ['你好', 'hi', 'hello', '嗨', '在吗'],
       reply: '你好呀，很高兴遇见你。想聊点什么？我的喜好、近况，或者随便说说话，都好。' },
     { keys: ['学校', '师范大学', '专业', '读哪', '在哪上学', '大几'],
       reply: '我在上海师范大学念书，现在大三。' },
     { keys: ['座右铭', '相信的一句话', '喜欢的话', '签名'],
-      reply: '有句话我认："不断寻找幸福的共振"。于我，幸福不是终点，而是那些刚好对上的瞬间——比如演唱会全场一起合唱的时候。' },
+      reply: '我总觉得，日子是慢慢过出来的——比起抵达，我更珍惜那些刚好对上的、细小的瞬间。' },
     { keys: ['上海', '住在哪', '常待的地方'],
       reply: '我在上海。这座城节奏很快，却也总藏得下慢下来的角落——有老街，也有 live house，这点我很喜欢。' },
     { keys: ['能聊什么', '可以问什么', '聊什么', '怎么问', '不会聊'],
@@ -353,7 +353,7 @@
   ];
 
   const fallbackReplies = [
-    '这个嘛，一时答不上来。不过音乐、追剧和远行，几乎串起了我生活的主线，往这几处问，我都能接上话。',
+    '这个嘛，一时答不上来。不过听歌、追剧和远行，几乎串起了我生活的主线，往这几处问，我都能接上话。',
     '嗯，这个我还没好好想过。我大抵是个心思细、偏理性的人，会从这般角度去瞧。若你好奇别的，换种问法也好。',
     '这不在我的范围里。你可以问我"最近在忙什么""最爱做什么""想去哪里旅行"，这三样我最有话讲。',
   ];
@@ -383,7 +383,6 @@
 - 近况：正在认真备考
 - 关心方向：大学以后的生活会是什么样
 - 小期待：经济独立、有自己的小空间
-- 认同的一句话：不断寻找幸福的共振
 
 【说话方式】
 1. 用第一人称"我"，语气温柔自然，像在深夜给老朋友发消息
