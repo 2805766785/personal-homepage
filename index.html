@@ -448,20 +448,22 @@
           <div class="card-head"><span class="card-icon">🪪</span><h3>基本信息</h3><span class="card-idx">01</span></div>
           <div class="row"><span class="label">身份</span><span class="value">上海师范大学 · 大三学生</span></div>
           <div class="row"><span class="label">坐标</span><span class="value">上海</span></div>
-          <div class="row"><span class="label">特点</span><span class="value">注重细节，理性务实</span></div>
+          <div class="row"><span class="label">近况</span><span class="value">正埋头书海，与考试斗智斗勇</span></div>
+          <div class="row"><span class="label">特点</span><span class="value">注重细节、理性务实，一遇演唱会就破功</span></div>
         </article>
 
         <article class="card">
-          <div class="card-head"><span class="card-icon">🎧</span><h3>兴趣与热爱</h3><span class="card-idx">02</span></div>
-          <div class="row"><span class="label">兴趣</span><span class="value">音乐 · 追剧 · 旅游</span></div>
-          <div class="row"><span class="label">旅行偏好</span><span class="value">能慢下来、有生活气息的地方</span></div>
+          <div class="card-head"><span class="card-icon">🎧</span><h3>音乐与下饭剧</h3><span class="card-idx">02</span></div>
+          <div class="row"><span class="label">音乐</span><span class="value">偏爱流行乐，颜人中、汪苏泷常驻歌单</span></div>
+          <div class="row"><span class="label">追剧</span><span class="value">综艺和电视剧通吃，标准下饭刚需</span></div>
+          <div class="row"><span class="label">执念</span><span class="value">演唱会现场，耳机给不了的那种震撼</span></div>
         </article>
 
         <article class="card">
-          <div class="card-head"><span class="card-icon">🌱</span><h3>近况与期待</h3><span class="card-idx">03</span></div>
-          <div class="row"><span class="label">近况</span><span class="value">认真备考中</span></div>
-          <div class="row"><span class="label">关心方向</span><span class="value">大学以后的生活会是怎样</span></div>
-          <div class="row"><span class="label">小期待</span><span class="value">经济独立、有自己的小空间</span></div>
+          <div class="card-head"><span class="card-icon">🏸</span><h3>运动与出游</h3><span class="card-idx">03</span></div>
+          <div class="row"><span class="label">运动</span><span class="value">羽毛球、乒乓球都来，发挥全看当天手感</span></div>
+          <div class="row"><span class="label">频率</span><span class="value">每学期至少出去浪一趟，少一次不算完整</span></div>
+          <div class="row"><span class="label">目的地</span><span class="value">慢得下来、有人间烟火气的地方</span></div>
         </article>
       </section>
 
@@ -536,11 +538,17 @@
   // 数字分身的知识库（可继续补充）
   const botBrain = [
     { keys: ['喜欢做什么', '爱好', '兴趣', '平时做', '喜欢'],
-      reply: '最喜欢听音乐和追剧，特别喜欢看演唱会——现场的氛围是戴耳机永远给不了的。追剧则是忙碌学习后最好的放松方式。有机会的话也很喜欢出去旅游，看看不一样的风景。' },
+      reply: '说来话长，但主线就几条：听歌、追剧、打球、出去玩。歌单里基本是流行乐，颜人中和汪苏泷循环播放；综艺和电视剧属于下饭刚需；羽毛球和乒乓球也打，发挥全看当天手感；每学期至少得出去浪一趟，不然这学期就白过了。' },
+    { keys: ['音乐', '听歌', '歌', '流行', '颜人中', '汪苏泷', '歌手'],
+      reply: '我主要听流行乐，颜人中和汪苏泷是歌单里的常驻选手，单曲循环是常态。要是哪天能去听他俩的现场，我大概能开心一整年。你有私藏好歌也务必推给我。' },
+    { keys: ['追剧', '综艺', '电视剧', '剧', '下饭', '看剧'],
+      reply: '综艺和电视剧我基本来者不拒，吃饭的时候必须配点什么看，不然这顿饭总觉得少了点灵魂。最近在看什么？给我种种草。' },
+    { keys: ['运动', '羽毛球', '乒乓球', '打球', '球类', '锻炼'],
+      reply: '我打羽毛球和乒乓球。水平嘛……手感来了谁都挡不住，手感没了谁也挡不住我输。不过图个开心，出出汗挺爽的。' },
     { keys: ['演唱会', '音乐会', '现场', 'live'],
-      reply: '我很喜欢看演唱会。现场那种大家一起合唱、灯光亮起的瞬间，是戴耳机永远听不到的感动，那也是最让我心动的时刻。' },
-    { keys: ['旅游', '去哪里', '想去哪', '旅行'],
-      reply: '最想去的旅游地，我的答案一直在更新。我喜欢那种能让人慢下来、有生活气息的地方，比如有海的城市、有老街的小镇。你有推荐的旅行地吗？' },
+      reply: '我很喜欢看演唱会。现场那种大家一起合唱、灯光亮起的瞬间，是戴耳机永远听不到的感动，也是最让我心动的时刻。' },
+    { keys: ['旅游', '去哪里', '想去哪', '旅行', '出游', '出去玩'],
+      reply: '我基本每学期至少出去玩一趟，收拾行李的速度比复习积极多了。目的地偏爱那种能慢下来、有生活气息的地方，比如有海的城市、有老街的小镇。你有推荐的吗？' },
     { keys: ['想获得', '想要', '希望', '目标', '想得到'],
       reply: '现在最想获得的，大概是一份"确定感"——学业顺利通过考试，也期待体验大学毕业以后独立、自由的生活。简单说就是：一步步把日子过成自己喜欢的样子。' },
     { keys: ['毕业', '以后', '未来', '大学以后', '生活'],
@@ -568,9 +576,9 @@
   ];
 
   const fallbackReplies = [
-    '这个问题一时答不上来诶。不过音乐、追剧和旅游基本构成了我生活的主线，往这几个方向问，我都能聊。',
-    '嗯，这个我还真没想过。我平时是个注重细节、偏理性务实的人，大概会从这个角度去看吧。要是你好奇别的，换个问法试试？',
-    '这个超出了我的范围。你可以问我"最近在忙什么""最喜欢做什么""想去哪里旅游"，这三类我最有话说。',
+    '这个问题一时答不上来诶。不过听歌、追剧、打球和出去玩基本构成了我生活的主线，往这几个方向问，我都能聊。',
+    '嗯，这个我还真没想过。我平时是个注重细节、偏理性务实的人——当然，一遇到演唱会就破功。要是你好奇别的，换个问法试试？',
+    '这个超出了我的范围。你可以问我"最近在忙什么""喜欢听谁的歌""想去哪里旅游"，这几类我最有话说。',
   ];
 
   const bambooFace = '🎋';
@@ -593,18 +601,21 @@
 - 名字：陈先竹，上海师范大学大三学生，坐标上海
 - 一句话介绍：一个正在学习用 AI 做产品的内容策划
 - 特点：注重细节、理性务实，熟了之后也有温度
-- 兴趣：音乐、追剧、旅游，特别喜欢看演唱会
-- 旅行偏好：能慢下来、有生活气息的地方，比如有海的城市、有老街的小镇
-- 近况：正在认真备考
-- 关心方向：大学以后的生活会是什么样
-- 小期待：经济独立、有自己的小空间
+- 近况：正在认真备考，埋头书海、与考试斗智斗勇
+- 特点：注重细节、理性务实，一遇到演唱会就破功
+- 音乐：偏爱流行乐，常听颜人中、汪苏泷，单曲循环是常态
+- 影视：综艺和电视剧都看，属于下饭刚需
+- 运动：打羽毛球和乒乓球，纯图开心，水平随手感浮动
+- 旅游：基本每学期至少出去一趟；偏爱能慢下来、有生活气息的地方，比如有海的城市、有老街的小镇
+- 特别喜欢：演唱会现场，那种震撼是耳机给不了的
 
 【说话方式】
 1. 用第一人称"我"，口语、自然，像在微信上聊天
 2. 每次只说 2-4 句，别写长篇大论，更不要用小标题和列表
 3. 不确定或资料里没有的事，就说"这个我也没想好"，不要编造
 4. 永远不要说"我是AI""我是语言模型"这类话
-5. 语气平和真诚，不夸张、不客套`;
+5. 语气平和真诚，可以带点小幽默和自嘲，别端着、别官方
+6. 回答要具体，多聊具体的歌手、剧、球类和出游经历，别只说空泛的"喜欢音乐"`;
 
   const history = [];
 
