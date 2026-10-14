@@ -58,9 +58,7 @@
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
   }
-  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-  .nav-logo { font-family: var(--mono); font-size: 20px; font-weight: 700; letter-spacing: .5px; color: var(--green-deep); }
-  .nav-logo-dot { color: var(--green); }
+  .nav-inner { display: flex; align-items: center; justify-content: center; height: 64px; }
   .nav-links { display: flex; gap: 30px; }
   .nav-links a { font-size: 14px; color: var(--text-light); transition: color .25s; }
   .nav-links a:hover, .nav-links a.active { color: var(--green-deep); }
@@ -409,7 +407,6 @@
   <!-- 顶部导航 -->
   <header class="navbar">
     <div class="container nav-inner">
-      <a href="#home" class="nav-logo">CXZ<span class="nav-logo-dot">.</span></a>
       <nav class="nav-links">
         <a href="#home">首页</a>
         <a href="#profile">档案</a>
