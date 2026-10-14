@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>陈先竹 · 个人主页</title>
 <meta name="theme-color" content="#7d9a6e">
-<meta name="description" content="陈先竹的个人主页与数字分身「竹」——上海师范大学大三学生，喜欢音乐、追剧和旅游，正在寻找幸福的共振。">
+<meta name="description" content="陈先竹的个人主页与数字分身「竹」——上海师范大学大三学生，喜欢音乐、追剧和旅游。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="陈先竹 · 个人主页">
-<meta property="og:description" content="不断寻找幸福的共振。这里有我的近况、兴趣，还有一个可以随时聊天的数字分身。">
+<meta property="og:description" content="这里有我的近况、兴趣，还有一个可以随时聊天的数字分身。">
 <meta property="og:url" content="https://2805766785.github.io/personal-homepage/">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23f1f6ee'/><path d='M32 14 V50 M28 14 H36 M28 26 H36 M28 38 H36 M32 26 C25 22 20 21 14 18 M32 26 C25 28 21 29 16 31' stroke='%237d9a6e' stroke-width='3' stroke-linecap='round' fill='none'/></svg">
@@ -41,6 +41,7 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  .container { width: 100%; max-width: 1040px; margin: 0 auto; padding: 0 24px; }
   .page {
     max-width: 940px;
     margin: 0 auto;
@@ -50,107 +51,55 @@
     gap: 22px;
   }
 
-  /* ===== 顶部名片 ===== */
-  .hero {
-    position: relative;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 22px;
-    padding: 34px 34px 28px;
-    box-shadow: var(--shadow);
-    overflow: hidden;
-    animation: rise .5s ease both;
+  /* ===== 顶部导航 ===== */
+  .navbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255, 255, 255, .82);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
   }
-  .hero::before {
-    content: "";
-    position: absolute;
-    right: -90px; top: -110px;
-    width: 300px; height: 300px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, #eaf2e4, rgba(234,242,228,0));
-    pointer-events: none;
-  }
-  .hero::after {
-    content: "";
-    position: absolute;
-    right: 26px; bottom: -70px;
-    width: 180px; height: 180px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 40% 40%, #f0f5fb, rgba(240,245,251,0));
-    pointer-events: none;
-  }
-  .hero-inner {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 28px;
-  }
-  .avatar-wrap { position: relative; flex-shrink: 0; }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .nav-logo { font-family: var(--mono); font-size: 20px; font-weight: 700; letter-spacing: .5px; color: var(--green-deep); }
+  .nav-logo-dot { color: var(--green); }
+  .nav-links { display: flex; gap: 30px; }
+  .nav-links a { font-size: 14px; color: var(--text-light); transition: color .25s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--green-deep); }
+  .nav-links a.active { position: relative; }
+  .nav-links a.active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, var(--green), var(--green-light)); }
+
+  .revealed { animation: fadeInUp .6s ease both; }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+
+  /* ===== Hero / 名字区 ===== */
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 110px 0 80px; }
+  .hero-inner { display: flex; flex-direction: column; align-items: center; text-align: center; }
   .avatar {
-    width: 112px; height: 112px;
-    border-radius: 50%;
-    background: linear-gradient(145deg, #f3f7ef, #e6efe0);
-    border: 1px solid #dde7d6;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 8px 22px rgba(125, 154, 110, .18);
-  }
-  .status-dot {
-    position: absolute;
-    right: 6px; bottom: 6px;
-    width: 16px; height: 16px;
-    border-radius: 50%;
-    background: #7ed99a;
+    width: 118px; height: 118px; border-radius: 50%;
+    background: linear-gradient(145deg, #eef4ea, #dbe8d3);
+    color: var(--green-deep); display: flex; align-items: center; justify-content: center;
+    margin-bottom: 30px; box-shadow: 0 12px 28px rgba(125, 154, 110, .22);
     border: 3px solid #fff;
   }
-  .eyebrow {
-    display: inline-block;
-    font-size: 12px;
-    letter-spacing: 2px;
-    color: var(--green-deep);
-    background: var(--green-light);
-    border: 1px solid #dfeadd;
-    border-radius: 999px;
-    padding: 4px 12px;
-    margin-bottom: 10px;
+  .avatar-text { font-family: var(--mono); font-size: 32px; font-weight: 700; letter-spacing: 1px; }
+  .hero-hello { font-family: var(--mono); font-size: 14px; color: var(--text-light); letter-spacing: 2px; margin-bottom: 8px; }
+  .hero-name {
+    font-size: 52px; font-weight: 700; letter-spacing: 3px; line-height: 1.1; margin-bottom: 16px;
+    background: linear-gradient(120deg, var(--green-deep), var(--green-light)); -webkit-background-clip: text; background-clip: text; color: transparent;
   }
-  .hero h1 {
-    font-size: 30px;
-    letter-spacing: 3px;
-    font-weight: 600;
-    line-height: 1.25;
+  .hero-major { font-size: 16px; color: var(--text-light); margin-bottom: 22px; letter-spacing: .5px; }
+  .hero-tagline { font-size: 18px; font-weight: 500; color: var(--text); margin-bottom: 38px; }
+  .hero-actions { display: flex; gap: 16px; margin-bottom: 70px; flex-wrap: wrap; justify-content: center; }
+  .btn {
+    display: inline-block; padding: 12px 30px; font-size: 14px; font-weight: 600;
+    border-radius: 999px; border: 1.5px solid var(--green); transition: all .25s; cursor: pointer;
   }
-  .hero .tagline {
-    margin-top: 6px;
-    font-size: 14.5px;
-    color: var(--text-light);
-    letter-spacing: .5px;
-  }
-  .chips {
-    display: flex; flex-wrap: wrap; gap: 8px;
-    margin-top: 14px;
-  }
-  .chip {
-    font-size: 12.5px;
-    color: #5f7060;
-    background: #f7f9f5;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 5px 12px;
-  }
-  .chip-accent {
-    color: var(--green-deep);
-    background: var(--green-light);
-    border-color: #dbe8d3;
-  }
-  .hero-quote {
-    position: relative;
-    margin-top: 22px;
-    padding-top: 16px;
-    border-top: 1px dashed #e6e9e2;
-    font-size: 13px;
-    color: #8d9a86;
-    letter-spacing: 1.5px;
-  }
+  .btn-primary { background: linear-gradient(120deg, var(--green), var(--green-deep)); color: #fff; border-color: transparent; box-shadow: 0 8px 20px rgba(125, 154, 110, .26); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(125, 154, 110, .34); }
+  .btn-ghost { background: #fff; color: var(--green-deep); }
+  .btn-ghost:hover { background: var(--green-light); transform: translateY(-2px); }
+  .hero-scroll { display: flex; justify-content: center; width: 26px; height: 42px; border: 1.5px solid var(--border); border-radius: 999px; padding-top: 8px; }
+  .hero-scroll-line { width: 3px; height: 12px; border-radius: 3px; background: linear-gradient(var(--green), var(--green-light)); animation: scrollPulse 1.8s ease-in-out infinite; }
+  @keyframes scrollPulse { 0% { transform: translateY(0); opacity: .4; } 50% { transform: translateY(8px); opacity: 1; } 100% { transform: translateY(0); opacity: .4; } }
 
   /* ===== 信息卡片（带科技感） ===== */
   .facts {
@@ -386,12 +335,10 @@
     .facts { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 640px) {
-    .page { padding: 20px 14px 24px; gap: 18px; }
-    .hero { padding: 24px 20px 20px; border-radius: 18px; }
-    .hero-inner { flex-direction: column; text-align: center; gap: 16px; }
-    .hero h1 { font-size: 25px; }
-    .chips { justify-content: center; }
-    .hero-quote { text-align: center; }
+    .nav-links { gap: 18px; }
+    .nav-links a { font-size: 13px; }
+    .hero { padding: 96px 0 64px; }
+    .hero-name { font-size: 38px; }
     .facts { grid-template-columns: 1fr; }
     .section-head { flex-direction: column; align-items: flex-start; gap: 6px; }
     .chat-card { height: 66vh; min-height: 400px; }
@@ -409,94 +356,95 @@
 </style>
 </head>
 <body>
-<div class="page">
-
-  <!-- ===== 顶部名片 ===== -->
-  <header class="hero">
-    <div class="hero-inner">
-      <div class="avatar-wrap">
-        <div class="avatar">
-          <svg viewBox="0 0 64 64" width="52" height="52" fill="none" stroke="#7d9070" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M27 12 V52"/>
-            <path d="M23 12 H31"/><path d="M23 23 H31"/><path d="M23 34 H31"/><path d="M23 45 H31"/>
-            <path d="M41 22 V52"/>
-            <path d="M37.5 22 H44.5"/><path d="M37.5 32 H44.5"/><path d="M37.5 42 H44.5"/>
-            <path d="M27 23 C21 19 15 18.5 10 15"/>
-            <path d="M27 23 C21 25 16 25.5 11 27"/>
-            <path d="M41 32 C36 28 31 27.5 26.5 24.5"/>
-            <path d="M41 32 C36 34 31.5 34.5 27 36"/>
-          </svg>
-        </div>
-        <span class="status-dot"></span>
-      </div>
-
-      <div class="hero-text">
-        <span class="eyebrow">个人主页 · 数字分身</span>
-        <h1>陈先竹</h1>
-        <p class="tagline">一个正在学习用 AI 做产品的内容策划</p>
-        <div class="chips">
-          <span class="chip">🎓 上海师范大学 · 大三</span>
-          <span class="chip">📍 上海</span>
-          <span class="chip">🎧 音乐 · 追剧 · 旅游</span>
-          <span class="chip chip-accent">📖 正在认真备考</span>
-        </div>
-      </div>
+  <!-- 顶部导航 -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="nav-logo">CXZ<span class="nav-logo-dot">.</span></a>
+      <nav class="nav-links">
+        <a href="#home">首页</a>
+        <a href="#profile">档案</a>
+        <a href="#assistant">助手</a>
+      </nav>
     </div>
-
-    <div class="hero-quote">不断寻找幸福的共振</div>
   </header>
 
-  <!-- ===== 三张信息卡 ===== -->
-  <section class="facts">
-    <article class="card">
-      <div class="card-head"><span class="card-icon">🪪</span><h3>基本信息</h3><span class="card-idx">01</span></div>
-      <div class="row"><span class="label">身份</span><span class="value">上海师范大学 · 大三学生</span></div>
-      <div class="row"><span class="label">坐标</span><span class="value">上海</span></div>
-      <div class="row"><span class="label">特点</span><span class="value">注重细节，理性务实</span></div>
-    </article>
+  <main>
+    <!-- 首页 / 名字区 -->
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+        <div class="avatar" aria-hidden="true"><span class="avatar-text">CXZ</span></div>
 
-    <article class="card">
-      <div class="card-head"><span class="card-icon">🎧</span><h3>兴趣与热爱</h3><span class="card-idx">02</span></div>
-      <div class="row"><span class="label">兴趣</span><span class="value">音乐 · 追剧 · 旅游</span></div>
-      <div class="row"><span class="label">旅行偏好</span><span class="value">能慢下来、有生活气息的地方</span></div>
-    </article>
+        <p class="hero-hello">你好，我是</p>
+        <h1 class="hero-name">陈先竹</h1>
 
-    <article class="card">
-      <div class="card-head"><span class="card-icon">🌱</span><h3>近况与期待</h3><span class="card-idx">03</span></div>
-      <div class="row"><span class="label">近况</span><span class="value">认真备考中</span></div>
-      <div class="row"><span class="label">关心方向</span><span class="value">大学以后的生活会是怎样</span></div>
-      <div class="row"><span class="label">小期待</span><span class="value">经济独立、有自己的小空间</span></div>
-    </article>
-  </section>
+        <p class="hero-major">上海师范大学 · 大三学生</p>
 
-  <!-- ===== 数字分身 ===== -->
-  <section class="chat-section">
-    <div class="section-head">
-      <div>
-        <h2>数字分身 · 竹</h2>
-        <p class="sub">按我的经历和性格搭出来的，想知道什么直接问就好</p>
+        <p class="hero-tagline">一个正在学习用 AI 做产品的内容策划</p>
+
+        <div class="hero-actions">
+          <a href="#profile" class="btn btn-primary">看看我的档案</a>
+          <a href="#assistant" class="btn btn-ghost">和竹聊聊</a>
+        </div>
+
+        <a href="#profile" class="hero-scroll" aria-label="向下滚动">
+          <span class="hero-scroll-line"></span>
+        </a>
       </div>
-      <span class="badge"><span class="dot"></span>在线 · 随时想聊</span>
+    </section>
+
+    <div class="page">
+      <!-- ===== 三张信息卡 ===== -->
+      <section class="facts" id="profile">
+        <article class="card">
+          <div class="card-head"><span class="card-icon">🪪</span><h3>基本信息</h3><span class="card-idx">01</span></div>
+          <div class="row"><span class="label">身份</span><span class="value">上海师范大学 · 大三学生</span></div>
+          <div class="row"><span class="label">坐标</span><span class="value">上海</span></div>
+          <div class="row"><span class="label">特点</span><span class="value">注重细节，理性务实</span></div>
+        </article>
+
+        <article class="card">
+          <div class="card-head"><span class="card-icon">🎧</span><h3>兴趣与热爱</h3><span class="card-idx">02</span></div>
+          <div class="row"><span class="label">兴趣</span><span class="value">音乐 · 追剧 · 旅游</span></div>
+          <div class="row"><span class="label">旅行偏好</span><span class="value">能慢下来、有生活气息的地方</span></div>
+        </article>
+
+        <article class="card">
+          <div class="card-head"><span class="card-icon">🌱</span><h3>近况与期待</h3><span class="card-idx">03</span></div>
+          <div class="row"><span class="label">近况</span><span class="value">认真备考中</span></div>
+          <div class="row"><span class="label">关心方向</span><span class="value">大学以后的生活会是怎样</span></div>
+          <div class="row"><span class="label">小期待</span><span class="value">经济独立、有自己的小空间</span></div>
+        </article>
+      </section>
+
+      <!-- ===== 数字分身 ===== -->
+      <section class="chat-section" id="assistant">
+        <div class="section-head">
+          <div>
+            <h2>数字分身 · 竹</h2>
+            <p class="sub">按我的经历和性格搭出来的，想知道什么直接问就好</p>
+          </div>
+          <span class="badge"><span class="dot"></span>在线 · 随时想聊</span>
+        </div>
+
+        <div class="chat-card">
+          <div class="chat-messages" id="chatMessages"></div>
+
+          <div class="quick-questions">
+            <button class="quick-btn" onclick="askQuick('你最喜欢做什么？')">你最喜欢做什么？</button>
+            <button class="quick-btn" onclick="askQuick('你最想去哪里旅游？')">你最想去哪里旅游？</button>
+            <button class="quick-btn" onclick="askQuick('你现在想获得什么？')">你现在想获得什么？</button>
+          </div>
+
+          <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="输入你想问的问题…" onkeydown="if(event.key==='Enter')sendMessage()">
+            <button onclick="sendMessage()">发送</button>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">© 2026 陈先竹</footer>
     </div>
-
-    <div class="chat-card">
-      <div class="chat-messages" id="chatMessages"></div>
-
-      <div class="quick-questions">
-        <button class="quick-btn" onclick="askQuick('你最喜欢做什么？')">你最喜欢做什么？</button>
-        <button class="quick-btn" onclick="askQuick('你最想去哪里旅游？')">你最想去哪里旅游？</button>
-        <button class="quick-btn" onclick="askQuick('你现在想获得什么？')">你现在想获得什么？</button>
-      </div>
-
-      <div class="chat-input">
-        <input type="text" id="chatInput" placeholder="输入你想问的问题…" onkeydown="if(event.key==='Enter')sendMessage()">
-        <button onclick="sendMessage()">发送</button>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">© 2026 陈先竹 · 不断寻找幸福的共振</footer>
-</div>
+  </main>
 
 <script>
   const messagesEl = document.getElementById('chatMessages');
@@ -507,7 +455,7 @@
     { keys: ['喜欢做什么', '爱好', '兴趣', '平时做', '喜欢'],
       reply: '最喜欢听音乐和追剧，特别喜欢看演唱会——现场的氛围是戴耳机永远给不了的。追剧则是忙碌学习后最好的放松方式。有机会的话也很喜欢出去旅游，看看不一样的风景。' },
     { keys: ['演唱会', '音乐会', '现场', 'live'],
-      reply: '我很喜欢看演唱会。现场那种大家一起合唱、灯光亮起的瞬间，是戴耳机永远听不到的感动。对我来说，那就是"幸福的共振"最具体的时刻。' },
+      reply: '我很喜欢看演唱会。现场那种大家一起合唱、灯光亮起的瞬间，是戴耳机永远听不到的感动，那也是最让我心动的时刻。' },
     { keys: ['旅游', '去哪里', '想去哪', '旅行'],
       reply: '最想去的旅游地，我的答案一直在更新。我喜欢那种能让人慢下来、有生活气息的地方，比如有海的城市、有老街的小镇。你有推荐的旅行地吗？' },
     { keys: ['想获得', '想要', '希望', '目标', '想得到'],
@@ -519,7 +467,7 @@
     { keys: ['你是谁', '你叫什么', '介绍一下'],
       reply: '你好，我是竹。可以问我任何事情——我的爱好、近况，或者随便聊聊。' },
     { keys: ['名字', '陈先竹', '她是谁'],
-      reply: '我叫陈先竹，就读于上海师范大学，现在是大三学生。我喜欢的一句话是："不断寻找幸福的共振"。' },
+      reply: '我叫陈先竹，就读于上海师范大学，现在是大三学生。' },
     { keys: ['特点', '性格', '什么样的人'],
       reply: '我是一个注重细节、理性务实的人。熟悉之后你会发现我其实也很有温度，喜欢音乐、追剧和旅游，是个认真生活的人。' },
     { keys: ['你好', 'hi', 'hello', '嗨', '在吗'],
@@ -527,7 +475,7 @@
     { keys: ['学校', '师范大学', '专业', '读哪', '在哪上学', '大几'],
       reply: '我在上海师范大学读书，现在大三。' },
     { keys: ['座右铭', '相信的一句话', '喜欢的话', '签名'],
-      reply: '我认同一句话："不断寻找幸福的共振"。对我来说，幸福不是一个终点，而是那些刚好对上的瞬间——比如演唱会全场一起合唱的时候。' },
+      reply: '我总觉得，日子是慢慢过出来的——比起抵达终点，我更珍惜那些刚好对上的、细碎的瞬间，比如演唱会全场一起合唱的时候。' },
     { keys: ['上海', '住在哪', '常待的地方'],
       reply: '我在上海。这座城市节奏挺快的，但总能找到慢下来的角落——有老街，也有 live house，这点我很喜欢。' },
     { keys: ['能聊什么', '可以问什么', '聊什么', '怎么问', '不会聊'],
@@ -567,7 +515,6 @@
 - 近况：正在认真备考
 - 关心方向：大学以后的生活会是什么样
 - 小期待：经济独立、有自己的小空间
-- 认同的一句话：不断寻找幸福的共振
 
 【说话方式】
 1. 用第一人称"我"，口语、自然，像在微信上聊天
@@ -733,6 +680,20 @@
 
   // 开场白
   addMessage('你好，我是竹 🎋\n这儿是我的主页，想知道什么直接问我——爱好、近况、想去哪玩，都能聊。', false);
+
+  /* ===== 导航高亮 ===== */
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sections = ['home', 'profile', 'assistant'].map(id => document.getElementById(id));
+  if ('IntersectionObserver' in window) {
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(s => s && spy.observe(s));
+  }
 </script>
 </body>
 </html>
