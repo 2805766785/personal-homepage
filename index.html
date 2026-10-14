@@ -176,6 +176,58 @@
   .row .label { color: #9d948a; flex-shrink: 0; width: 66px; font-size: 13px; }
   .row .value { color: var(--text); }
 
+  /* ===== 技能与课程 ===== */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .skill-card {
+    position: relative;
+    background:
+      radial-gradient(circle, rgba(160,120,90,.05) 1px, transparent 1.4px) 0 0 / 16px 16px,
+      linear-gradient(180deg, #ffffff, #fdfbf8);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px 16px;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    animation: rise .5s ease both;
+  }
+  .skill-card:nth-child(1) { animation-delay: .06s; }
+  .skill-card:nth-child(2) { animation-delay: .12s; }
+  .skill-card:nth-child(3) { animation-delay: .18s; }
+  .skill-card::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), #c9a583);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .3s ease;
+  }
+  .skill-card:hover {
+    transform: translateY(-5px);
+    border-color: #dcc7ae;
+    box-shadow: 0 14px 34px rgba(109, 81, 56, .16);
+  }
+  .skill-card:hover::before { transform: scaleX(1); }
+  .skill-title {
+    font-size: 13px; font-weight: 600; letter-spacing: 1.5px;
+    color: var(--accent-deep);
+    padding-bottom: 10px; margin-bottom: 12px;
+    border-bottom: 1px solid #f3ece2;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tags li {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--text);
+    background: var(--accent-light);
+    border: 1px solid #e6d8c6;
+    border-radius: 999px;
+    padding: 4px 11px;
+  }
+
   /* ===== 开发环境 ===== */
   .dev-grid {
     display: grid;
@@ -385,6 +437,7 @@
   }
 
   @media (max-width: 860px) {
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
     .dev-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 640px) {
@@ -393,6 +446,7 @@
     .hero { padding: 96px 0 64px; }
     .hero-name { font-size: 38px; }
     .card-rows { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
     .dev-grid { grid-template-columns: 1fr; }
     .section-head { flex-direction: column; align-items: flex-start; gap: 6px; }
     .chat-card { height: 66vh; min-height: 400px; }
@@ -416,6 +470,7 @@
       <nav class="nav-links">
         <a href="#home">首页</a>
         <a href="#profile">档案</a>
+        <a href="#skills">技能</a>
         <a href="#environment">环境</a>
         <a href="#assistant">助手</a>
       </nav>
@@ -475,6 +530,55 @@
             <div class="row"><span class="label">目的地</span><span class="value">不挑，哪儿都想去，有机会就出发</span></div>
           </div>
         </article>
+      </section>
+
+      <!-- ===== 技能与课程 ===== -->
+      <section class="skills-section" id="skills">
+        <div class="section-head">
+          <div>
+            <h2>技能与课程</h2>
+            <p class="sub">上海师范大学 · 计算机科学与技术</p>
+          </div>
+          <span class="badge">Coursework &amp; Skills</span>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3 class="skill-title">核心课程</h3>
+            <ul class="skill-tags">
+              <li>数据结构</li>
+              <li>算法分析与设计</li>
+              <li>操作系统</li>
+              <li>计算机网络</li>
+              <li>编译原理</li>
+              <li>计算机组成原理</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <h3 class="skill-title">系统与网络</h3>
+            <ul class="skill-tags">
+              <li>数字逻辑</li>
+              <li>离散数学</li>
+              <li>微型计算机技术</li>
+              <li>接口与汇编语言</li>
+              <li>数据库技术与应用</li>
+              <li>网络安全</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <h3 class="skill-title">智能与开发</h3>
+            <ul class="skill-tags">
+              <li>人工智能</li>
+              <li>计算机图形学</li>
+              <li>软件工程</li>
+              <li>Web 程序设计</li>
+              <li>C / Java / C#</li>
+              <li>Python</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <!-- ===== 开发环境 ===== -->
@@ -573,8 +677,10 @@
       reply: '我是一个注重细节、理性务实的人。熟悉之后你会发现我其实也很有温度，喜欢音乐、追剧和旅游，是个认真生活的人。' },
     { keys: ['你好', 'hi', 'hello', '嗨', '在吗'],
       reply: '你好，很高兴见到你。想聊点什么？可以问我的爱好、近况，或者随便聊聊。' },
-    { keys: ['学校', '师范大学', '专业', '读哪', '在哪上学', '大几'],
-      reply: '我在上海师范大学读书，现在大三。' },
+    { keys: ['专业', '课程', '学了什么', '学什么', '技能', '会什么', '编程', '语言'],
+      reply: '我学的是计算机科学与技术。核心课有数据结构、算法分析与设计、操作系统、计算机网络、编译原理、计算机组成原理；系统与网络这边是数字逻辑、离散数学、微机技术、接口与汇编、数据库、网络安全；智能与开发有人工智能、计算机图形学、软件工程、Web 程序设计。语言主要用 C、Java 和 Python。' },
+    { keys: ['学校', '师范大学', '读哪', '在哪上学', '大几'],
+      reply: '我在上海师范大学读书，现在大三，专业是计算机科学与技术。' },
     { keys: ['座右铭', '相信的一句话', '喜欢的话', '签名'],
       reply: '我总觉得，日子是慢慢过出来的——比起抵达终点，我更珍惜那些刚好对上的、细碎的瞬间，比如演唱会全场一起合唱的时候。' },
     { keys: ['上海', '住在哪', '常待的地方'],
@@ -609,7 +715,10 @@
 
 【关于我】
 - 名字：陈先竹，上海师范大学大三学生，坐标上海
+- 专业：计算机科学与技术
 - 一句话介绍：一个正在学习用 AI 做产品的内容策划
+- 主修课程：数据结构、算法分析与设计、操作系统、计算机网络、编译原理、计算机组成原理、数字逻辑、离散数学、微型计算机技术、接口与汇编语言、数据库技术与应用、网络安全、人工智能、计算机图形学、软件工程、Web 程序设计
+- 常用语言：C、Java、Python
 - 特点：注重细节、理性务实
 - 近况：正在认真备考，埋头书海、与考试斗智斗勇
 - 音乐：偏爱流行乐，常听颜人中、汪苏泷，单曲循环是常态
@@ -795,7 +904,7 @@
 
   /* ===== 导航高亮 ===== */
   const navLinks = document.querySelectorAll('.nav-links a');
-  const sections = ['home', 'profile', 'environment', 'assistant'].map(id => document.getElementById(id));
+  const sections = ['home', 'profile', 'skills', 'environment', 'assistant'].map(id => document.getElementById(id));
   if ('IntersectionObserver' in window) {
     const spy = new IntersectionObserver((entries) => {
       entries.forEach(e => {
