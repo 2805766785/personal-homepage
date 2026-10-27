@@ -969,12 +969,12 @@ const fallbackReplies = [
   '这个超出了我的范围。你可以问我"最近在忙什么""喜欢听谁的歌""想去哪里旅游"，这几类我最有话说。',
 ];
 
-/* ===== 大模型接入（智谱 BigModel，兼容 OpenAI 流式接口）=====
-   注意：纯静态页面，Key 会暴露在源码里；已选免费模型 glm-4-flash，建议定期更换 Key 并设置用量上限。 */
+/* ===== 大模型接入（硅基流动 SiliconFlow，OpenAI 流式接口，支持浏览器跨域直连）=====
+   注意：纯静态页面，Key 会暴露在源码里；用的是免费模型，建议定期更换 Key 并设置用量上限。 */
 const AI = {
-  apiKey: 'd3f7a13bea4646898ecb5ed8d30a8cee.fnkSbgvgLq6RS8Yu',
-  url: 'https://open.bigmodel.cn/api/paas/v4/chat/completions',
-  model: 'glm-4-flash',
+  apiKey: 'sk-javnflhyahdyssehkuzgzfkwdbuigxkjociyeprkbkoijabe',
+  url: 'https://api.siliconflow.cn/v1/chat/completions',
+  model: 'Qwen/Qwen2.5-7B-Instruct',
   temperature: 0.75,
   maxTokens: 400,
   dailyLimit: 30
