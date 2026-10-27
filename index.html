@@ -708,8 +708,8 @@
         </div>
         <div class="card t-mint rv" style="--i:3">
           <span class="dev-label">LLM</span>
-          <span class="dev-value">Qwen2.5-7B</span>
-          <span class="dev-sub">硅基流动 SiliconFlow · 数字分身「竹」</span>
+          <span class="dev-value">Qwen-Plus</span>
+          <span class="dev-sub">阿里云百炼 DashScope · 数字分身「竹」</span>
         </div>
         <div class="card t-pink rv" style="--i:4">
           <span class="dev-label">Deploy</span>
@@ -969,12 +969,12 @@ const fallbackReplies = [
   '这个超出了我的范围。你可以问我"最近在忙什么""喜欢听谁的歌""想去哪里旅游"，这几类我最有话说。',
 ];
 
-/* ===== 大模型接入（硅基流动 SiliconFlow，OpenAI 流式接口，支持浏览器跨域直连）=====
-   注意：纯静态页面，Key 会暴露在源码里；用的是免费模型，建议定期更换 Key 并设置用量上限。 */
+/* ===== 大模型接入（阿里云百炼 DashScope，OpenAI 流式接口，支持浏览器跨域直连）=====
+   注意：纯静态页面，Key 会暴露在源码里；建议定期更换 Key 并在百炼后台设置调用上限。 */
 const AI = {
-  apiKey: 'sk-javnflhyahdyssehkuzgzfkwdbuigxkjociyeprkbkoijabe',
-  url: 'https://api.siliconflow.cn/v1/chat/completions',
-  model: 'Qwen/Qwen2.5-7B-Instruct',
+  apiKey: 'sk-ws-H.YHHREYH.Azlc.MEYCIQDkP1B6ZoME2La4TbGRpE1MH-UdzjjKcJCNsGHYou6lmgIhAPNcFX_BWxLQDP6PwxvW1E4m0Cup7E04lixKMkvrCBZw',
+  url: 'https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions',
+  model: 'qwen-plus',
   temperature: 0.75,
   maxTokens: 400,
   dailyLimit: 30
